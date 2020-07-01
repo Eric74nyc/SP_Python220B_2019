@@ -5,6 +5,7 @@
 
 import uuid
 from datetime import datetime, timedelta
+from csv import writer
 import random
 
 def random_date():
@@ -21,13 +22,17 @@ def random_date():
 
 def create_record(num_list):
     #up to a million
-    for i in range(1000):
-        del num_list[0]
-        num_list.append(num_list[2] + 1)
-        guid = str(uuid.uuid4())
-        ao_choice = ['ao', '', '', '']
-        print([guid] + num_list + [random_date()] + [random.choice(ao_choice)])
-    
+    with open('exercise.csv', 'a+', newline='') as write_obj:
+        csv_writer = writer(write_obj)
+        for i in range(100):
+            del num_list[0]
+            num_list.append(num_list[2] + 1)
+            guid = str(uuid.uuid4())
+            ao_choice = ['ao', '', '', '']
+            #need to write to csv file
+            #print([guid] + num_list + [random_date()] + [random.choice(ao_choice)])
+            new_row = [guid] + num_list + [random_date()] + [random.choice(ao_choice)]
+            csv_writer.writerow(new_row)
 
 if __name__ == "__main__":
     create_record([10, 11, 12, 13])
