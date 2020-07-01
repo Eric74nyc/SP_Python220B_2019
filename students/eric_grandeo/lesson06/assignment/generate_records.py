@@ -24,7 +24,7 @@ def create_record(num_list):
     #up to a million
     with open('exercise.csv', 'a+', newline='') as write_obj:
         csv_writer = writer(write_obj)
-        for i in range(100):
+        for i in range(1000000):
             del num_list[0]
             num_list.append(num_list[2] + 1)
             guid = str(uuid.uuid4())

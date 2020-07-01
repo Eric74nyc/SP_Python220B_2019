@@ -1,0 +1,20 @@
+#Notes
+
+Steps:
+1. time python3 poor_perf.py: 
+    real    0m3.216s
+    user    0m3.074s
+    sys     0m0.138s
+
+2, time pypy3 poor_perf.py:
+    real    0m3.771s
+    user    0m3.554s
+    sys     0m0.217s
+
+3. cProfile:
+    1038485 function calls (1038468 primitive calls) in 3.236 seconds
+
+    ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+    1000022    0.049    0.000    0.049    0.000 {method 'append' of 'list' objects}
+
+4. do the JIT test on functions
